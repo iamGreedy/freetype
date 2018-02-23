@@ -188,7 +188,7 @@ func (c *Context) rasterize(glyph truetype.Index, fx, fy fixed.Int26_6) (
 	}
 	a := image.NewAlpha(image.Rect(0, 0, xmax-xmin, ymax-ymin))
 	c.r.Rasterize(raster.NewAlphaSrcPainter(a))
-	return c.glyphBuf.AdvanceWidth, a, image.Point{xmin, ymin}, nil
+	return c.glyphBuf.AdvanceWidth, a, image.Point{xmin, ymin - ymax}, nil
 }
 
 // glyph returns the advance width, glyph mask and integer-pixel offset to
